@@ -51,18 +51,22 @@
 }
 
 .hero {
-    height: 90vh;
+    /* use min-height to allow content to wrap on small screens */
+    min-height: 90vh;
     background: palegreen;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 40px;
     gap: 40px;
+    flex-wrap: wrap;
 }
 
 .hero-text {
     flex: 1;
+    min-width: 300px; /* prevent text from shrinking too much */
 }
+
 
 /* heading style inside hero */
 .hero h1 {
@@ -149,6 +153,7 @@
     width: 100%;
     gap: 40px;
     text-align: start;
+    flex-wrap: wrap;
 }
 
 .about-image {
@@ -239,4 +244,60 @@ footer {
 .details span {
     display: block;
     margin-top: 4px; /* space between each line */
+}
+
+/* ---------- responsive adjustments ---------- */
+/* make images and containers flexible */
+.hero, .about-content, .service-box {
+    flex-wrap: wrap;
+}
+
+.hero-image, .about-image {
+    width: 100%;
+    max-width: 550px;
+    height: auto;
+}
+
+/* scale texts down on smaller screens */
+.hero h1 { font-size: 3rem; }
+.hero h2 { font-size: 2.5rem; }
+.hero p { font-size: 1rem; }
+
+/* buttons full width on mobile */
+.hero button { width: 100%; max-width: 200px; }
+
+/* cards become narrower already handled by flex-wrap */
+
+/* media query breakpoints */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+    .nav-links {
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 10px;
+    }
+    .review {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px 0;
+    }
+    .review-item .number { font-size: 3rem; }
+    .service-box { gap: 20px; }
+}
+
+@media (max-width: 480px) {
+    .hero h1 { font-size: 2rem; }
+    .hero h2 { font-size: 1.5rem; }
+    .hero p { font-size: 0.9rem; }
+    .about-text, .about-story {
+        font-size: 1rem;
+    }
+    .card {
+        width: 100%;
+        max-width: 300px;
+    }
 }

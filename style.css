@@ -5,12 +5,31 @@
     font-family: Arial, sans-serif;
 }
 
+/* fixed header styles */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;
     padding: 15px 40px;
     background: #2e7d32;
     color: white;
+}
+
+/* ensure content doesn't hide behind fixed header */
+body {
+    padding-top: 70px; /* adjust if header height changes */
+}
+
+/* smooth scrolling and offset for fixed header */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 70px; /* same as body padding-top */
 }
 
 /* logo container with circle and text */
